@@ -287,6 +287,16 @@ public class XMSegmentedControl: UIView {
         delegate?.xmSegmentedControl(self, selectedSegment: selectedSegment)
     }
     
+    /// Simulate tab press
+    public func pressTabWithIndex(index: Int) {
+        for subview in self.subviews {
+            if subview.tag == index {
+                segmentPressed(subview as! UIButton)
+                return
+            }
+        }
+    }
+    
     /// Scales an Image to the size provided. It takes into account alpha. And it uses the screen's scale to resize.
     private func resizeImage(image:UIImage) -> UIImage {
         let size = CGSize(width: 20, height: 20)
